@@ -1,18 +1,28 @@
 import React, { FC } from "react";
 import DeleteModal from "../../components/Modals/DeleteModal";
+import AddProductModal from "../../components/Modals/AddModal/index";
 
 interface CollectionsProps { }
 
 const TableSection: FC<CollectionsProps> = () => {
 
+    const [openModal, setOpenModal] = React.useState<boolean>(false)
     const [openDeleteModal, setOpenDeleteModal] = React.useState<boolean>(false)
 
     const handleClose = () => {
         setOpenDeleteModal(false)
     }
 
+    const handleCloseAdd = () => {
+        setOpenModal(false)
+      }
+
     return (
         <section className="h-auto">
+            <AddProductModal
+                show={openModal}
+                handleClose={handleCloseAdd}
+            />
             <DeleteModal
                 show={openDeleteModal}
                 setOpenDeleteModal={setOpenDeleteModal}
@@ -26,7 +36,7 @@ const TableSection: FC<CollectionsProps> = () => {
                             <div className="w-full b-2 flex items-center">
                                 <p className="font-bold text-2xl ml-2">Customer Lists</p>
                             </div>
-                            <button className="flex items-center justify-center text-[15px] text-white px-6 py-1 rounded-lg bg-green-500">
+                            <button onClick={() => setOpenModal(true)} className="flex items-center justify-center text-[15px] text-white px-6 py-1 rounded-lg bg-green-500">
                                 Add
                             </button>
                         </div>
