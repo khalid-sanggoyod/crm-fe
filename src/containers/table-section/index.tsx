@@ -15,7 +15,8 @@ interface Customer {
 
 const TableSection: FC = () => {
     const [customers, setCustomers] = useState<Customer[]>([]);
-    const [openModal, setOpenModal] = useState<boolean>(false);
+    const [openAddModal, setOpenAddModal] = useState<boolean>(false);
+    const [updateModal, setUpdateModal] = useState<boolean>(false);
     const [openDeleteModal, setOpenDeleteModal] = useState<boolean>(false);
     const [selectedCustomer, setSelectedCustomer] = useState<Customer | null>(null);
 
@@ -39,13 +40,18 @@ const TableSection: FC = () => {
     };
 
     const handleCloseAddModal = () => {
-        setOpenModal(false);
+        setOpenAddModal(false);
+        setSelectedCustomer(null);
+    };
+
+    const handleCloseUpdateModal = () => {
+        setUpdateModal(false);
         setSelectedCustomer(null);
     };
 
     const handleEdit = (customer: Customer) => {
         setSelectedCustomer(customer);
-        setOpenModal(true);
+        setUpdateModal(true);
     };
 
     const handleDelete = async () => {
@@ -64,13 +70,13 @@ const TableSection: FC = () => {
     return (
         <section className="h-auto px-4 md:px-8 lg:px-20">
             <AddModal
-                show={openModal}
+                show={openAddModal}
                 handleClose={handleCloseAddModal}
                 setCustomers={setCustomers}
             />
             <UpdateModal
-                show={openModal}
-                handleClose={handleCloseAddModal}
+                show={updateModal}
+                handleClose={handleCloseUpdateModal}
                 setCustomers={setCustomers}
                 selectedCustomer={selectedCustomer}
             />
@@ -87,7 +93,7 @@ const TableSection: FC = () => {
                     <div className="flex items-center justify-between mb-4">
                         <p className="font-bold text-xl md:text-2xl">Customer Lists</p>
                         <button
-                            onClick={() => setOpenModal(true)}
+                            onClick={() => setOpenAddModal(true)}
                             className="text-white px-4 py-2 rounded-lg bg-green-500 hover:bg-green-600 transition"
                         >
                             Add

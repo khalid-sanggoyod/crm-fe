@@ -43,7 +43,7 @@ const AddModal: React.FC<{
         <Modal
             show={show}
             handleCloseAndReset={handleCloseAndReset}
-            label={'Customer'}
+            label={'Add New Customer'}
             handleSubmit={handleSubmit(onSubmit)}
         >
             <div className="block h-full p-4 my-auto">

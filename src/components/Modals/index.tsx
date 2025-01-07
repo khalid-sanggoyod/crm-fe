@@ -17,7 +17,7 @@ const Modal: React.FC<any> = (props) => {
                         <div className="flex items-center p-4">
                             <div className="w-3/4">
                                 <div className={`flex items-center`}>
-                                    <span className="font-bold text-md">{props.updateData ? `Update ${props.label}` : `Add New ${props.label}`}</span>
+                                    <span className="font-bold text-md">{props.label}</span>
                                 </div>
                             </div>
                             <div className="w-1/4 text-right">
@@ -49,7 +49,7 @@ const Modal: React.FC<any> = (props) => {
                                     type="submit"
                                     className={`bg-white border flex justify-center w-full h-full px-4 py-2 text-sm hover:bg-gray-100 border-gray-300 rounded-md shadow-sm cursor-pointer group`}
                                 >
-                                    {props.updateData ? `Update ${props.label}` : `Add ${props.label}`}
+                                    {props.label}
                                 </button>
                             </div>
                         </div>
