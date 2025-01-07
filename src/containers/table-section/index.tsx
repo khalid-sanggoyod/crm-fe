@@ -3,6 +3,7 @@ import axios from "axios";
 import DeleteModal from "../../components/Modals/DeleteModal";
 import AddProductModal from "../../components/Modals/AddModal";
 import AddModal from "../../components/Modals/AddModal";
+import UpdateModal from "../../components/Modals/UpdateModal";
 
 interface Customer {
     id: number;
@@ -27,16 +28,6 @@ const TableSection: FC = () => {
             console.error("Error fetching customers:", error);
         }
     };
-
-    const handleAddCustomer = async (newCustomer: Omit<Customer, "id">) => {
-        try {
-          const response = await axios.post("http://127.0.0.1:8000/api/customers", newCustomer);
-          setCustomers((prev) => [...prev, response.data]); // Update the state with the new customer
-          setOpenModal(false);
-        } catch (error) {
-          console.error("Error adding customer:", error);
-        }
-      };
 
     useEffect(() => {
         fetchCustomers();
@@ -76,6 +67,12 @@ const TableSection: FC = () => {
                 show={openModal}
                 handleClose={handleCloseAddModal}
                 setCustomers={setCustomers}
+            />
+            <UpdateModal
+                show={openModal}
+                handleClose={handleCloseAddModal}
+                setCustomers={setCustomers}
+                selectedCustomer={selectedCustomer}
             />
             <DeleteModal
                 show={openDeleteModal}

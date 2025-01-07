@@ -57,8 +57,6 @@ const AddModal: React.FC<{
                                 type="text"
                                 id="first_name"
                                 placeholder="First Name"
-                                autoCapitalize="words"
-                                autoComplete="given-name"
                                 className={`block w-full px-4 py-2 mt-1 text-sm border rounded-md shadow-sm ${errors.first_name && 'border-red-400'}`}
                                 {...register("first_name", {
                                     required: "First name is required"
@@ -78,8 +76,6 @@ const AddModal: React.FC<{
                                 type="text"
                                 id="last_name"
                                 placeholder="Last Name"
-                                autoCapitalize="words"
-                                autoComplete="given-name"
                                 className={`block w-full px-4 py-2 mt-1 text-sm border rounded-md shadow-sm ${errors.last_name && 'border-red-400'}`}
                                 {...register("last_name", {
                                     required: "Last name is required"
@@ -99,8 +95,6 @@ const AddModal: React.FC<{
                                 type="text"
                                 id="email"
                                 placeholder="Email"
-                                autoCapitalize="words"
-                                autoComplete="given-name"
                                 className={`block w-full px-4 py-2 mt-1 text-sm border rounded-md shadow-sm ${errors.email && 'border-red-400'}`}
                                 {...register("email", {
                                     required: "Email is required",
@@ -122,8 +116,6 @@ const AddModal: React.FC<{
                                 type="text"
                                 id="contact_number"
                                 placeholder="Contact Number"
-                                autoCapitalize="words"
-                                autoComplete="given-name"
                                 className={`block w-full px-4 py-2 mt-1 text-sm border rounded-md shadow-sm ${errors.contact_number && 'border-red-400'}`}
                                 {...register("contact_number", {
                                     required: "Contact number is required"
