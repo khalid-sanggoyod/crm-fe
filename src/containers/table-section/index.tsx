@@ -15,7 +15,7 @@ const TableSection: FC<CollectionsProps> = () => {
 
     const handleCloseAdd = () => {
         setOpenModal(false)
-      }
+    }
 
     return (
         <section className="h-auto">
