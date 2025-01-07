@@ -1,10 +1,10 @@
+import TableSection from "./containers/table-section"
+
 function App() {
   return (
-    <>
-      <div className="text-3xl font-bold underline">
-        TEST
-      </div>
-    </>
+    <main>
+      <TableSection />
+    </main>
   )
 }
 
