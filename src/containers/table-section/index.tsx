@@ -1,10 +1,24 @@
-import { FC } from "react";
+import React, { FC } from "react";
+import DeleteModal from "../../components/Modals/DeleteModal";
 
 interface CollectionsProps { }
 
 const TableSection: FC<CollectionsProps> = () => {
+
+    const [openDeleteModal, setOpenDeleteModal] = React.useState<boolean>(false)
+
+    const handleClose = () => {
+        setOpenDeleteModal(false)
+    }
+
     return (
         <section className="h-auto">
+            <DeleteModal
+                show={openDeleteModal}
+                setOpenDeleteModal={setOpenDeleteModal}
+                handleClose={handleClose}
+                label={'Customer'}
+            />
             <div className="mx-96 my-20 space-y-40">
                 <div id="category-table-container-1" className={`grid gap-5 mt-4`}>
                     <div id="list-of-category" className={`panel-v1`}>
@@ -79,7 +93,7 @@ const TableSection: FC<CollectionsProps> = () => {
                                                 <button className="flex items-center justify-center text-[15px] text-white px-4 rounded-lg bg-yellow-500">
                                                     Edit
                                                 </button>
-                                                <button className="flex items-center justify-center text-[15px] text-white px-4 rounded-lg bg-red-500">
+                                                <button onClick={() => setOpenDeleteModal(true)} className="flex items-center justify-center text-[15px] text-white px-4 rounded-lg bg-red-500">
                                                     Delete
                                                 </button>
                                             </div>
