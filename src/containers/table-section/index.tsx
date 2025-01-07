@@ -100,7 +100,7 @@ const TableSection: FC<CollectionsProps> = () => {
                                         </td>
                                         <td>
                                             <div className="flex justify-between w-40">
-                                                <button className="flex items-center justify-center text-[15px] text-white px-4 rounded-lg bg-yellow-500">
+                                                <button onClick={() => setOpenModal(true)} className="flex items-center justify-center text-[15px] text-white px-4 rounded-lg bg-yellow-500">
                                                     Edit
                                                 </button>
                                                 <button onClick={() => setOpenDeleteModal(true)} className="flex items-center justify-center text-[15px] text-white px-4 rounded-lg bg-red-500">
