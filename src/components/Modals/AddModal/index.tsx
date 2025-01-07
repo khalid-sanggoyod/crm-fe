@@ -6,7 +6,8 @@ import AddModal from "./AddModal";
 const AddProductModal: React.FC<{
     show: boolean;
     handleClose: () => void;
-}> = ({ show, handleClose }) => {
+    setCustomers: any
+}> = ({ show, handleClose, setCustomers }) => {
     const {
         register,
         handleSubmit,
@@ -22,11 +23,16 @@ const AddProductModal: React.FC<{
     const onSubmit = async (data: any) => {
         try {
             const response = await axios.post(
-                "https://jsonplaceholder.typicode.com/posts",
+                "http://127.0.0.1:8000/api/customers",
                 data
             );
-            console.log("Response:", response.data);
-            alert("Form submitted successfully!");
+
+            if (response.status === 201) {
+                setCustomers((prev: any) => [...prev, response.data.data]);
+                handleClose()
+                reset()
+                alert("Form submitted successfully!");
+            }
         } catch (error: any) {
             console.log("Error submitting form: ", error);
             alert("Error submitting form!")
