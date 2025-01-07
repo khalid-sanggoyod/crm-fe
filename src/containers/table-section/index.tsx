@@ -1,7 +1,8 @@
 import React, { FC, useEffect, useState } from "react";
 import axios from "axios";
 import DeleteModal from "../../components/Modals/DeleteModal";
-import AddProductModal from "../../components/Modals/AddModal/index";
+import AddProductModal from "../../components/Modals/AddModal";
+import AddModal from "../../components/Modals/AddModal";
 
 interface Customer {
     id: number;
@@ -71,11 +72,10 @@ const TableSection: FC = () => {
 
     return (
         <section className="h-auto px-4 md:px-8 lg:px-20">
-            <AddProductModal
+            <AddModal
                 show={openModal}
                 handleClose={handleCloseAddModal}
                 setCustomers={setCustomers}
-            // customer={selectedCustomer}
             />
             <DeleteModal
                 show={openDeleteModal}

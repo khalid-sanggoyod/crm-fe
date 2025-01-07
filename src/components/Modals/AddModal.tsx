@@ -1,9 +1,9 @@
 import React from "react";
 import { useForm } from "react-hook-form";
 import axios from "axios";
-import AddModal from "./AddModal";
+import Modal from ".";
 
-const AddProductModal: React.FC<{
+const AddModal: React.FC<{
     show: boolean;
     handleClose: () => void;
     setCustomers: any
@@ -40,7 +40,7 @@ const AddProductModal: React.FC<{
     }
 
     return (
-        <AddModal
+        <Modal
             show={show}
             handleCloseAndReset={handleCloseAndReset}
             label={'Customer'}
@@ -134,8 +134,8 @@ const AddProductModal: React.FC<{
                     </div>
                 </div>
             </div>
-        </AddModal>
+        </Modal>
     )
 }
 
-export default React.memo(AddProductModal)
+export default React.memo(AddModal)

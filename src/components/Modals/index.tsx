@@ -1,6 +1,6 @@
 import React from "react";
 
-const AddModal: React.FC<any> = (props) => {
+const Modal: React.FC<any> = (props) => {
     return (
         <div className={`fixed inset-0 z-30 overflow-x-auto ${props.show ? '' : 'hidden'}`}>
             <div className="flex items-center justify-center p-4">
@@ -60,4 +60,4 @@ const AddModal: React.FC<any> = (props) => {
     )
 }
 
-export default AddModal;
+export default Modal;
