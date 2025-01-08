@@ -74,7 +74,7 @@ const TableSection: FC = () => {
     };
 
     return (
-        <section className="h-auto px-4 md:px-8 lg:px-20">
+        <section className="h-auto px-4 md:px-8 lg:px-20 mt-20">
             <AddModal
                 show={openAddModal}
                 handleClose={handleCloseAddModal}
@@ -95,7 +95,7 @@ const TableSection: FC = () => {
             />
 
             <div className="space-y-8">
-                <div className="panel-v1 bg-white shadow-md rounded-lg p-4">
+                <div className="panel-v1 bg-white p-4">
                     <div className="flex items-center justify-between mb-4">
                         <p className="font-bold text-xl md:text-2xl">Customer Lists</p>
                         <ButtonComponent
