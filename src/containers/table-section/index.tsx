@@ -4,6 +4,7 @@ import DeleteModal from "../../components/Modals/DeleteModal";
 import AddProductModal from "../../components/Modals/AddModal";
 import AddModal from "../../components/Modals/AddModal";
 import UpdateModal from "../../components/Modals/UpdateModal";
+import { ButtonComponent } from "../../components/Buttons";
 
 interface Customer {
     id: number;
@@ -54,7 +55,12 @@ const TableSection: FC = () => {
         setUpdateModal(true);
     };
 
-    const handleDelete = async () => {
+    const handleDelete = (customer: Customer) => {
+        setSelectedCustomer(customer);
+        setOpenDeleteModal(true);
+    };
+
+    const handleConfirm = async () => {
         if (selectedCustomer) {
             try {
                 await axios.delete(`http://127.0.0.1:8000/api/customers/${selectedCustomer.id}`);
@@ -85,19 +91,18 @@ const TableSection: FC = () => {
                 setOpenDeleteModal={setOpenDeleteModal}
                 handleClose={handleCloseDeleteModal}
                 label={"Customer"}
-                handleConfirm={handleDelete}
+                handleConfirm={handleConfirm}
             />
 
             <div className="space-y-8">
                 <div className="panel-v1 bg-white shadow-md rounded-lg p-4">
                     <div className="flex items-center justify-between mb-4">
                         <p className="font-bold text-xl md:text-2xl">Customer Lists</p>
-                        <button
-                            onClick={() => setOpenAddModal(true)}
-                            className="text-white px-4 py-2 rounded-lg bg-green-500 hover:bg-green-600 transition"
-                        >
-                            Add
-                        </button>
+                        <ButtonComponent
+                            handleFunc={() => setOpenAddModal(true)}
+                            name={"Add"}
+                            className="bg-green-500 hover:bg-green-600 px-4 py-2"
+                        />
                     </div>
 
                     <div className="overflow-x-auto">
@@ -123,21 +128,16 @@ const TableSection: FC = () => {
                                             <td className="px-4 py-2">{customer.contact_number}</td>
                                             <td className="px-4 py-2">
                                                 <div className="flex space-x-2">
-                                                    <button
-                                                        onClick={() => handleEdit(customer)}
-                                                        className="text-white px-3 py-1 rounded-lg bg-yellow-500 hover:bg-yellow-600 transition"
-                                                    >
-                                                        Edit
-                                                    </button>
-                                                    <button
-                                                        onClick={() => {
-                                                            setSelectedCustomer(customer);
-                                                            setOpenDeleteModal(true);
-                                                        }}
-                                                        className="text-white px-3 py-1 rounded-lg bg-red-500 hover:bg-red-600 transition"
-                                                    >
-                                                        Delete
-                                                    </button>
+                                                    <ButtonComponent
+                                                        handleFunc={() => handleEdit(customer)}
+                                                        name={"Edit"}
+                                                        className="bg-yellow-500 hover:bg-yellow-600"
+                                                    />
+                                                    <ButtonComponent
+                                                        handleFunc={() => handleDelete(customer)}
+                                                        name={"Delete"}
+                                                        className="bg-red-500 hover:bg-red-600"
+                                                    />
                                                 </div>
                                             </td>
                                         </tr>
